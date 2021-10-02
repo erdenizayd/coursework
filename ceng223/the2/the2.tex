@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+% symbol commands for the curious
+\newcommand{\setZp}{\mathbb{Z}^+}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\calT}{\mathcal{T}}
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Mehmet Erdeniz Aydoğdu \\
+Id Number :  2380103
+
+% Write your answers below the section tags
+\section*{Answer 1}
+\paragraph{a.}
+\renewcommand{\theenumi}{\textbf{\roman{enumi}}}%
+\begin{enumerate}
+\item For $\mathcal{T}_1$,
+\begin{enumerate}
+    \item First property is satisfied because $\varnothing$ and \emph{A} are in $\mathcal{T}_1$
+    \item Second property is satisfied because $\varnothing$ $\cup$ \emph{A} = \emph{A} is in $\mathcal{T}_1$
+    \item Third property is satisfied because $\varnothing$ $\cap$ \emph{A} = $\varnothing$ is in $\mathcal{T}_1$\newline \newline
+    Thus, $\mathcal{T}_1$ is a topology.
+\end{enumerate}
+\item For $\mathcal{T}_2$,
+\begin{enumerate}
+    \item First property is satisfied because $\varnothing$ and \emph{A} are in $\mathcal{T}_2$
+    \item \{a\} $\cup$ \{b\} = \{a,b\} is not in $\mathcal{T}_2$, so second property is not satisfied \newline \newline
+    $\mathcal{T}_2$ is not a topology.
+\end{enumerate}
+\item For $\mathcal{T}_3$,
+\begin{enumerate}
+    \item First property is satisfied because $\varnothing$ and \emph{A} are in $\mathcal{T}_3$
+    \item For second property, one can see, union of any two or more elements in $\mathcal{T}_3$ is in $\mathcal{T}_3$. Thus, second property is satisfied.
+    \item For third property, similarly, intersection of any two or more elements in $\mathcal{T}_3$ is in $\mathcal{T}_3$. Thus, third property is satisfied. \newline \newline
+    $\mathcal{T}_3$ is a topology.
+\end{enumerate}
+\item For $\mathcal{T}_4$,
+\begin{enumerate}
+    \item First property is satisfied because $\varnothing$ and \emph{A} are in $\mathcal{T}_4$
+    \item \{a,c\} $\cup$ \{b\} = \{a,b,c\} is not in $\mathcal{T}_4$, so second property is not satisfied. \newline \newline
+    Thus, $\mathcal{T}_4$ is not a topology.
+\end{enumerate}
+\end{enumerate}
+\newpage
+\paragraph{b.}
+\renewcommand{\theenumi}{\textbf{\roman{enumi}}}%
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item For \emph{A} - \emph{U} to be finite, \emph{A} must be finite. Also, \emph{A} - \emph{U} may be \emph{A}, so we know that both \emph{A} and $\varnothing$ is in the set because \emph{A} - $\varnothing$ = \emph{A}. So, first condition is satisfied.
+        \item As found in (a), \emph{A} is finite. Because the set includes all subsets of \emph{A}, one can clearly see that union of any two or more elements is a subset of \emph{A}. Second condition is satisfied.
+        \item Similarly, intersection of any two or more elements of the set must be a subset of \emph{A}. Third condition is satisfied. \newline \newline
+        The set is a topology.
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+        \item For \emph{A} - \emph{U} to be countable, both \emph{A} and \emph{U} must be countable. Because \emph{A} * \emph{U} may be \emph{A} and empty set $\varnothing$ is countable, one can see that \emph{A} and $\varnothing$ is in the set. First condition is satisfied.
+        \item As found in (a), \emph{A} is countable. Then, any subset of \emph{A} is countable and satisfies \emph{A} - \emph{U}. One can see that, the union of any two or more elements of the set is in the set. Second condition is satisfied.
+        \item Similarly, as \emph{A} and any subset of \emph{A} are countable, one can see that the intersection of any two or more elements of the set must be a subset of \emph{A}. Third condition is satisfied. \newline \newline
+        The set is a topology.
+    \end{enumerate}
+    \item As \emph{A} - \emph{U} may be infinite, there are two cases for \emph{A}
+    \begin{enumerate}
+        \item \emph{A} is uncountably infinite. In this case, the set is not a topology.
+        \item \emph{A} is countably infinite. In this case, the set, say $\mathcal{T}$ is a topology. Say \emph{A} = \{a,b,c,d,e...\}
+        \begin{enumerate}
+            \item Because \emph{A} - \emph{U} may be $\varnothing$ or \emph{A}, one can see both $\varnothing$ and \emph{A} is in $\mathcal{T}$. First condition is satisfied.
+            \item Because \emph{A} is countable, one can say that any subset of \emph{A} is countable, also the set of all subsets are countable. One can say that, all subsets of \emph{A} is in $\mathcal{T}$. $\mathcal{T}$ can be written as $\mathcal{T}$ = \{$\varnothing$, \{a\}, \{b\}, \{a,b\},\{c\},\{a,b,c\}...\}, so $\mathcal{T}$ is countable. Thus, the union of any two elements of $\mathcal{T}$ is in $\mathcal{T}$. Second condition is satisfied.
+            \item Similarly, the interception of any two elements of $\mathcal{T}$ is in $\mathcal{T}$. Third condition is satisfied. Thus, $\mathcal{T}$ is a topology.
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+\newpage
+\section*{Answer 2}
+\paragraph{a.} For x, z in \emph{A} and y, t in (0,1) \newline \newline
+Say, f(x,y) = f(z,t), x $\neq$ z, y $\neq$ t, then \newline
+x + y = z + t \newline
+x - z = t - y \newline
+x - z must be an integer as both x and z are integers \newline
+t - y must be a real number in (-1,0] or [0,-1) \newline
+For x - z = t - y to hold, x - z = t - y = 0 and x = z, y = t \newline
+Thus, f is injective.
+\paragraph{b.} For a real number b $\in$ [0, $\infty$) \newline \newline
+For x $\in$ \emph{A} and y $\in$ (0,1) \newline
+b can be written as the sum of an integer and a real number between 0 and 1 b = x + y = f(x,y)\newline
+Thus, f is surjective.
+\paragraph{c.} Schroeder-Bernstein theorem states that, if there exists injections f: \emph{A} $\rightarrow$ \emph{B} and g: \emph{B} $\rightarrow$ \emph{A}, then there exists a bijection k: \emph{A} $\rightarrow$ \emph{B} \newline
+As found in part a, f: \emph{A} $\times$ (0,1) $\rightarrow$ [0,$\infty$) is injective. \newline
+It is given that g: [0,$\infty$) $\rightarrow$ \emph{A} $\times$ (0,1) is injective too. \newline
+Then, by the Schroeder-Bernstein theorem, there exist a bijection \emph{A} $\times$ (0,1) $\rightarrow$ [0,$\infty$) \newline
+Thus, A $\times$ (0,1) and [0,$\infty$) have same cardinality.
+\newpage
+\section*{Answer 3}
+\paragraph{a.} \emph{A} = $\{f(0), f(1) \in \mathbb{Z}^+ \mid (f(0),f(1)) \}$ which is $\mathbb{Z}^+ \times \mathbb{Z}^+ $. As $\mathbb{Z}^+$ is countable, the cartesian product is countable. Thus \emph{A} is countable.
+\paragraph{b.} \emph{B} = $\{f(0), f(1),..., f(n) \in \mathbb{Z}^+ \mid (f(0),f(1),...,f(n)) \}$ \newline $\mathbb{Z}^+$ $\times$ $\mathbb{Z}^+$ $\times$ ... $\times$ $\mathbb{Z}^+$ the cartesian product of n $\mathbb{Z}^+$ is \emph{B}. As $\mathbb{Z}^+$ is countable, the cartesian product is countable. Thus \emph{B} is countable.
+\paragraph{c.} Say $f_n \in$ \emph{C} for n$\in \mathbb{Z}^+$ Define a function g such that\newline
+$g_n(n) = f_n(n) + 1$ \newline
+One can see that g : $\mathbb{Z}^+ \rightarrow \mathbb{Z^+}$, so $g_n \in$ \emph{C} \newline
+However, $g_n(n) \neq f_n(n)$ because $g_n(n) = f_n(n) + 1$ \newline
+Thus, \emph{C} is uncountable.
+\paragraph{d.} Similarly, Say $f_n \in$ \emph{D} for n$\in \mathbb{Z}^+$ Define a function g such that
+$$
+g_n(n) = \left\{
+        \begin{array}{ll}
+            0 & \quad f_n(n) = 1 \\
+            1 & \quad f_n(n) = 0
+        \end{array}
+    \right.
+$$
+Then, one can see that, $g_n \in$ \emph{D}, however $g_n \neq f_n$ \newline
+Thus, \emph{D} is uncountable.
+
+\paragraph{e.} For all n $\in \mathbb{Z}^+$, say \emph{E'} = $\{f: \mathbb{Z}^+ \rightarrow \{0,1\} \mid f(x) = 0 for x > n\}$ \newline
+Then, \emph{E'} is a finite set, because all f $\in$ \emph{E'} is defined by n f(1), f(2),..., f(n). Also, every element of \emph{E} can be written as an element of \emph{E'} for some n value. Thus, \emph{E} is a union of finite sets, which is finite.
+
+\section*{Answer 4}
+\paragraph{a.} According to Stirling's approximation, ln(n!) = nln(n) - n \newline \newline
+Take exponential of both sides $e^{ln(n!)}$ = $e^{nln(n)-n}$ then, \newline
+n! = $n^ne^{-n}$ \newline
+$C_1n^n$ < $n^ne^{-n}$ < $C_2n^n$ for some constants $C_1,C_2$ and n > 0, because of definition of $\Theta(n^n)$, then \newline
+$C_1$ < $e^{-n}$ < $C_2$ because $n^n$ is always positive \newline
+Take $C_1$ = 0 and $C_2$ = 1, then n! is $\Theta(n^n)$
+\paragraph{b.} $(n+a)^b$ can be written as $C_0n^b + C_1n^{b-1}a + C_2n^{b-2}a^2 + ... + C_{b-1}na^{b-1} + C_ba^b$ where $C_0, C_1,..., C_b$ are some constants.\newline
+Because of the definition of $\Theta$, one can say that \newline
+$C_kn^b$ < $(n+a)^b$ < $C_jn^b$ for some constants $C_k, C_j$, we know that for a polynomial,\newline
+$C_0n^b + C_1n^{b-1}a + C_2n^{b-2}a^2 + ... + C_{b-1}na^{b-1} + a^b \leq n^b(C_0 + C_1a + C_2a^2 +...+ C_{b-1}a^{b-1} + C_ba^b)$\newline
+For n > 1 there exists $a, C_0, C_1,..., C_b$ such that, \newline
+$C_0n^b < C_0n^b + C_1n^{b-1}a + C_2n^{b-2}a^2 + ... + C_{b-1}na^{b-1} + a^b < (C_0 + C_1a + C_2a^2 +...+ C_{b-1}a^{b-1} + C_ba^b)n^b$\newline
+Thus, $(n+a)^b$ is $\Theta(n^b)$
+\section*{Answer 5}
+\paragraph{a.} One can say that, $x = y{\lfloor x/y \rfloor} + (x\:mod\:y)$ Then, \newline \newline
+$2^x - 2^{x\:mod\:y} = 2^{y{\lfloor x/y \rfloor} + (x\:mod\:y)} + 2^{x\:mod\:y} = 2^{x\:mod\:y}(2^{y{\lfloor x/y \rfloor}} - 1)$\newline
+As $2^y \equiv 1\:mod(2^y\:-\:1)$ and $2^{y{\lfloor x/y \rfloor}} \equiv 1\:mod(2^y\:-\:1)$,\newline
+$2^x - 2^{x\:mod\:y} \equiv 2^{x\:mod\:y}(2^{y{\lfloor x/y \rfloor}} - 1) \equiv 0(mod\:2^y\:-1)$, add each side $(2^{x\:mod\:y} -1)$,\newline
+$(2^x\:-\:1) \equiv (2^{x\:mod\:y} -1)(mod\:2^y\:-\:1)$ \newline
+As $x \equiv y(mod\:m)$ means $x\:mod\:m\:=\:y\:mod\:m$,\newline
+$(2^x - 1)\:mod\:(2^y - 1) = (2^{x\:mod\:y} - 1)\:mod\:(2^y - 1) = 2^{x\:mod\:y} - 1$
+\paragraph{b.} There exist integers q and r such that $0\leq r < y$ and $x = yq + r$\newline
+Also, we know that $gcd(x,y) = gcd(y,r)$ and $r = x\:mod\:y$, then\newline
+$gcd(2^x-1, 2^y-1) = gcd(2^y - 1,(2^x -1)\:mod\:(2^y - 1))$, using the equation in question a,\newline
+$gcd(2^x - 1,2^y - 1) = gcd(2^y - 1, 2^{x\:mod\:y} - 1)$ and by the Euclidian Algorithm,\newline
+$gcd(2^x - 1,2^y - 1) = 2^{gcd(x,y)} - 1$
+
+
+
+\end{document}

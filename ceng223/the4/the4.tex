@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+% symbol commands for the curious
+\newcommand{\setZp}{\mathbb{Z}^+}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\calT}{\mathcal{T}}
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Mehmet Erdeniz Aydoğdu \\ 
+Id Number :  2380103 \\ 
+
+% Write your answers below the section tags
+\section*{Answer 1}
+When we choose 1 star, 2 habitable planets and 8 non-habitable planets, the number of combinations we can get can be counted by: \newline \newline
+\centerline{$\binom{10}{1} \binom{20}{2} \binom{80}{8}$} \newline \newline
+Then, the number of ways for the case of 6 non-habitable planets between 2 habitable planets can be counted by \newline \newline
+\centerline{$\binom{10}{1} \binom{20}{2} \binom{80}{8} (\binom{8}{6}\:6!\:2!\:2!)$} \newline \newline
+The number of ways for the case of 7 non-habitable planets between habitable ones is: \newline \newline
+\centerline{$\binom{10}{1} \binom{20}{2} \binom{80}{8} (\binom{8}{7}\:7!\:2!\:1!)$} \newline \newline
+Lastly, for 8 non-habitable planets between habitable ones, the number of ways can be counted by: \newline \newline
+\centerline{$\binom{10}{1} \binom{20}{2} \binom{80}{8} (\binom{8}{8}\:8!\:2!\:0!)$} \newline \newline
+By the rule of sum, the number of ways are: \newline \newline
+\centerline{$\binom{10}{1} \binom{20}{2} \binom{80}{8} (\binom{8}{6}\:6!\:2!\:2!\:+\:\binom{8}{7}\:7!\:2!\:1!\:+\:\binom{8}{8}\:8!\:2!\:0!)$}
+\newpage
+\section*{Answer 2}
+Here, the characteristic equation of the relation is $r^3 - 2r^2 - 15r + 36 = 0$ \newline
+Using this equation we can derive $(r-3)^3(r+4) = 0$ \newline
+Solving this equation, we get 2 roots $r_1 = 3$ with multiplicity 3 and $r_2 = -4$ \newline
+Thus, homogeneous solution is \newline \newline
+\centerline{$a^{(h)}_n = (A_1n^2 + A_2n + A_3)3^n + B(-4)^n$} \newline \newline
+where $A_1,\:A_2,\:A_3$ and $B$ are arbitrary constants.\newline \newline
+Since particular part only have constant coefficient "1", $a^{(p)}_n$ is of type $P 2^n$ \newline
+We get $(P\:-\:2P\:-\:15P\:+\:36P)2^n = 2^n$ by substituting the particular solution to the equation. Thus, \newline \newline
+$P\:-\:2P\:-\:15P\:+\:36P\:=\:20P\:=\:1$, then $P\:=\:\frac{1}{20}$\newline \newline
+\centerline{$a^{(p)}_n = \frac{1}{20}2^n$}
+\section*{Answer 3}
+In order to generate the recurrence relation, we have two possibilities: 
+\begin{enumerate}
+    \item For an n-digit valid code $a_n$, adding an odd digit to a (n-1)-digit invalid code $a_{n-1}$. There are total number of $10^{n-1}$ codes, thus $10^{n-1} - a_{n-1}$ number of invalid codes. Because there are 5 odd digits, we have $5(10^{n-1} - a_{n-1})$ valid codes.
+    \item For an n-digit valid code $a_n$, adding an even digit to a (n-1)-digit valid code $a_{n-1}$. Since there are five even digits, we have $5a_{n-1}$
+\end{enumerate}
+    For n = 1, we only have 1-digit codes, which contain odd digits, of number five. Then, $a_1 = 5$ Thus, the recurrence relation is:\newline \newline
+    \centerline{$a_n = 5a_{n-1} + 5(10^{n-1} - a_{n-1}) = 5 \times 10^{n-1}$}
+\newpage
+\section*{Answer 4}
+Writing the equation in summation form: \newline \newline
+\centerline{$\sum_{k=3}^{\infty}a_k x^k = 3\sum_{k=3}^{\infty}a_{k-1}x^k - 3\sum_{k=3}^{\infty}a_{k-2}x^k + \sum_{k=3}^{\infty} a_{k-3}x^k$} \newline \newline
+By making adjustments on the right hand side: \newline \newline
+\centerline{$\sum_{k=3}^{\infty}a_k x^k = 3x\sum_{k=3}^{\infty}a_{k-1}x^{k-1} - 3x^2\sum_{k=3}^{\infty}a_{k-2}x^{k-2} + x^3\sum_{k=3}^{\infty} a_{k-3}x^{k-3}$} \newline \newline
+For $G(x) = \sum_{k=0}^{\infty}a_k x^k$, writing the equation using $G(x)$: \newline \newline
+\centerline{$G(x) - a_0 - a_1x - a_2x^2 = 3x(G(x) - a_0 - a_1x) - 3x^2(G(x) * a_0) + x^3G(x)$} \newline \newline
+Substitute $a_0 = 1$, $a_1 = 3$, $a_2 = 6$ and reorganize the equation: \newline \newline
+\centerline{$G(x)(1 - 3x + 3x^2 - x^3) = 1 + 3x + 6x^2 - 3x - 9x^2 + 3x^2$} \newline \newline
+\centerline{$G(x)(1-x)^3 = 1$, thus, $G(x) = \frac{1}{(1-x)^3}$} \newline \newline
+By the 9th generating function in the table, $a_k = C(k+2,k) = \frac{(k+1)(k+2)}{2}$ 
+\section*{Answer 5}
+\paragraph{a.}
+\begin{enumerate}
+    \item We need to show that R is reflexive: \newline
+    ((a,b),(a,b)) $\in$ R iff a + b = b + a, so R is reflexive.
+    \item To show R is symmetric: \newline
+    ((a,b),(c,d)) $\in$ R iff a + d = b + c \newline
+    ((c,d),(a,b)) $\in$ R iff c + b = d + a, so R is symmetric.
+    \item To show R is transitive: \newline
+    ((a,b),(c,d)) $\in$ R iff a + d = b + c \newline
+    ((c,d),(e,f)) $\in$ R iff c + f = d + e \newline
+    Using first and second equation, we get a + f = b + e, which is \newline
+    ((a,b),(e,f)) $\in$ R iff a + f = b + e, so R is transitive.
+\end{enumerate}
+Thus, R is a equivalence relation.
+\paragraph{b.}
+((a,b),(1,2)) $\in$ R iff a + 2 = b + 1 \newline \newline
+From the equation, we get b = a + 1, then \newline \newline
+$[(1,2)]_R = {(a,a + 1)}$
+
+\end{document}

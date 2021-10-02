@@ -1,0 +1,5 @@
+Programming assigment for manipulating a world metal trade dataset. Main file and the dataset is not included here, so this is basicly an implementation for:
+	hash table using quadratic probing,
+	directed graph
+
+Hash function for implementing hash table and general class definitions are provided in the assignment.
