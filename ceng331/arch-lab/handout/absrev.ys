@@ -1,0 +1,242 @@
+#/* $begin absrev-ys *#
+##################################################################
+# absrev.ys - Reverse a src block of len words to dst.
+# Return the sum of absolute values of words contained in src.
+#
+# Include your name and ID here.
+# Describe how and why you modified the baseline code.
+#
+# Mehmet Erdeniz Aydoğdu 2380103
+# I decreased the number of lines additions for computing dst_rev, which reduced the cpe from 17.83 to 17.53
+# After one loop unrolling, shifting or removing some lines, cpe is reduced from 17.53 to 14.36
+# After implementing leaq instruction and replacing some instructions with it, cpe is reduced to 13.81
+# After adding two loop unrollings (index 4) cpe is reduced to 13.24
+# After adding two more loop unrollings, cpe is reduced to 12.93
+# After I rearranged and removed some instructions, which reduced the number of instructions for computations, cpe is reduced to 11.81
+# After changes in the pipe-full.hcl and replacing some lines with icmpq, cpe reduced to 11.01
+# After implementing jump table with 8 factor loop unrolling, cpe is reduced to 10.60E
+# With final replacements, cpe is reduced to 10.54
+##################################################################
+# Do not modify this portion
+# Function prologue.
+# %rdi = src, %rsi = dst, %rdx = len
+absrev:
+##################################################################
+# You can modify this portion
+    
+    xorq %rax,%rax
+    
+    icmpq $8, %rdx
+    jl TableCalculate
+    
+    leaq -1(%rdx), %rcx
+    addq %rcx, %rcx
+    addq %rcx, %rcx
+    addq %rcx, %rcx
+    addq %rsi, %rcx
+Loop:
+    mrmovq (%rdi), %r10
+    rmmovq %r10, (%rcx)
+    mrmovq 8(%rdi), %r11
+    rmmovq %r11, -8(%rcx)
+    mrmovq 16(%rdi), %r12
+    rmmovq %r12, -16(%rcx)
+    mrmovq 24(%rdi), %r13
+    rmmovq %r13, -24(%rcx)
+    mrmovq 32(%rdi), %r14
+    rmmovq %r14, -32(%rcx)
+    mrmovq 40(%rdi), %r8
+    rmmovq %r8, -40(%rcx)
+    mrmovq 48(%rdi), %rbx
+    rmmovq %rbx, -48(%rcx)
+    mrmovq 56(%rdi), %rbp
+    rmmovq %rbp, -56(%rcx)
+
+    icmpq $0, %r10
+    jge loop1
+    rrmovq %r10, %r9
+    xorq %r10, %r10
+    subq %r9, %r10
+loop1:
+    addq %r10, %rax
+    icmpq $0, %r11
+    jge loop2
+    rrmovq %r11, %r9
+    xorq %r11, %r11
+    subq %r9, %r11
+loop2:
+    addq %r11, %rax
+    icmpq $0, %r12
+    jge loop3
+    rrmovq %r12, %r9
+    xorq %r12, %r12
+    subq %r9, %r12
+loop3:
+    addq %r12, %rax
+    icmpq $0, %r13
+    jge loop4
+    rrmovq %r13, %r9
+    xorq %r13, %r13
+    subq %r9, %r13
+loop4:
+    addq %r13, %rax
+    icmpq $0, %r14
+    jge loop5
+    rrmovq %r14, %r9
+    xorq %r14, %r14
+    subq %r9, %r14
+loop5:
+    addq %r14, %rax
+    icmpq $0, %r8
+    jge loop6
+    rrmovq %r8, %r9
+    xorq %r8, %r8
+    subq %r9, %r8
+loop6:
+    addq %r8, %rax
+    icmpq $0, %rbx
+    jge loop7
+    rrmovq %rbx, %r9
+    xorq %rbx, %rbx
+    subq %r9, %rbx
+loop7:
+    addq %rbx, %rax
+    icmpq $0, %rbp
+    jge loop8
+    rrmovq %rbp, %r9
+    xorq %rbp, %rbp
+    subq %r9, %rbp
+loop8:
+    addq %rbp, %rax
+    leaq -8(%rdx), %rdx
+    leaq 64(%rdi), %rdi
+    leaq -64(%rcx), %rcx
+    icmpq $8, %rdx
+    jge Loop
+
+TableCalculate:
+    addq %rdx, %rdx
+    addq %rdx, %rdx
+    addq %rdx, %rdx
+
+jmpstart:
+    leaq -8(%rdx), %rcx
+    leaq JumpTable(%rdx), %rdx
+    mrmovq (%rdx), %rbp
+    addq %rsi, %rcx
+    pushq %rbp
+    ret
+
+jmp7:
+    mrmovq 48(%rdi), %r11
+    rmmovq %r11, -48(%rcx)
+jmp7_check:
+    andq %r11, %r11
+    jge jmp7_1
+    rrmovq %r11, %r9
+    xorq %r11, %r11
+    subq %r9, %r11
+jmp7_1:
+    addq %r11, %rax
+    jmp jmp6
+
+jmp6:
+    mrmovq 40(%rdi), %r11
+    rmmovq %r11, -40(%rcx)
+jmp6_check:
+    andq %r11, %r11
+    jge jmp6_1
+    rrmovq %r11, %r9
+    xorq %r11, %r11
+    subq %r9, %r11
+jmp6_1:
+    addq %r11, %rax
+    jmp jmp5
+
+jmp5:
+    mrmovq 32(%rdi), %r11
+    rmmovq %r11, -32(%rcx)
+jmp5_check:
+    andq %r11, %r11
+    jge jmp5_1
+    rrmovq %r11, %r9
+    xorq %r11, %r11
+    subq %r9, %r11
+jmp5_1:
+    addq %r11, %rax
+    jmp jmp4
+
+jmp4:
+    mrmovq 24(%rdi), %r12
+    rmmovq %r12, -24(%rcx)
+jmp4_check:
+    andq %r12, %r12
+    jge jmp4_1
+    rrmovq %r12, %r9
+    xorq %r12, %r12
+    subq %r9, %r12
+
+jmp4_1:
+    addq %r12, %rax
+    jmp jmp3
+
+jmp3:
+    mrmovq 16(%rdi), %r13
+    rmmovq %r13, -16(%rcx)
+jmp3_check:
+    andq %r13, %r13
+    jge jmp3_1
+    rrmovq %r13, %r9
+    xorq %r13, %r13
+    subq %r9, %r13
+
+jmp3_1:
+    addq %r13, %rax
+    jmp jmp2
+
+jmp2:
+    mrmovq 8(%rdi), %rbx
+    rmmovq %rbx, -8(%rcx)
+jmp2_check:
+    andq %rbx, %rbx
+    jge jmp2_1
+    rrmovq %rbx, %r9
+    xorq %rbx, %rbx
+    subq %r9, %rbx
+
+jmp2_1:
+    addq %rbx, %rax
+    jmp jmp1
+
+jmp1:
+    mrmovq (%rdi), %r8
+    rmmovq %r8, (%rcx)
+jmp1_check:
+    andq %r8, %r8
+    jge jmp1_1
+    rrmovq %r8, %r9
+    xorq %r8, %r8
+    subq %r9, %r8
+
+jmp1_1:
+    addq %r8, %rax
+    jmp Done
+.align 7
+JumpTable:
+    .quad Done
+    .quad jmp1
+    .quad jmp2
+    .quad jmp3
+    .quad jmp4
+    .quad jmp5
+    .quad jmp6
+    .quad jmp7
+##################################################################
+# Do not modify the following section of code
+# Function epilogue.
+Done:
+    ret
+##################################################################
+# Keep the following label at the end of your function
+End:
+#/* $end absrev-ys */
